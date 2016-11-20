@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  </head>
+  <body >
+    <div ng-app="">
+<form enctype='application/json'>
+  <input id='name' onsubmit="" ng-model='Name' name='name' type='text'placeholder="Name" required/><label style='color:red'>*</label><h3 id='req' style='color:red; display: none;'>Required</h3><br>
+  <input id='email' onsubmit="" ng-model='Email' name='email' type='text'placeholder="Email" required/><label style='color:red'>*</label><h3 id='req' style='color:red; display: none;'>Required</h3><br>
+  <select name='hind'><br>
+    <option selected>Bitable</option>
+    <option>Kickable</option>
+  </select>
+  <input type='checkbox' name='shiny' checked><br>
+  <input type="submit" value="Submit">
+</form><br>
+<h2>Name: {{Name}}</h2>
+<h2>Email: {{Email}}</h2>
+</div>
+</body>
+</html>

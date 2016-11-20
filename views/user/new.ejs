@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .jumbotron{
+        text-align: center;
+
+      }
+      .form-control{
+          width: 25%;
+          margin-left: 37%
+      }
+      * {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  margin: 50px;
+}
+
+ul {
+  overflow: auto;
+  list-style-type: none;
+}
+
+li {
+  height: 25px;
+  float: left;
+  margin-right: 0px;
+  border-right: 1px solid #aaa;
+  padding: 0 20px;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  text-decoration: none;
+  color: #ccc;
+  font: 25px/1 Helvetica, Verdana, sans-serif;
+  text-transform: uppercase;
+
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+li a:hover {
+  color: #666;
+}
+
+li.active a {
+  font-weight: bold;
+  color: #333;
+}
+    </style>
+  </head>
+  <body>
+    <nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/user/index1">Users</a></li>
+    <li class='active'><a href="/user/new">Register</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Edit</a></li>
+  </ul>
+</nav>
+    <div ng-app="">
+    <form id='sign-up-form' class='container jumbotron' class='form-control' action='/user/create' method='POST' enctype='application/json'>
+      <h2 class='form-signin-heading'>Create an Account</h2><br><br>
+      <% if(flash && flash.err){ %>
+        <ul class='alert alert-success'>
+          <% Object.keys(flash.err).forEach(function(error){ %>
+            <li><%= JSON.stringify(flash.err[error]) %> </li>
+            <% }) %>
+        </ul>
+        <% } %>
+        <div class="control-group">
+          <p>
+            Name:
+          </p>
+    <input class='form-control' ng-model='Name' name='name' type='text'placeholder="Name" required/><br>
+    <p>
+      Email:
+    </p>
+    <input class="form-control" ng-model='Email' name='email' type='email' placeholder="Email" required/><br>
+    <p>
+      Password:
+    </p>
+    <input class="form-control" type="password" name="password" id='password' placeholder="Password" required/><br>
+    <input class="btn btn-info" type="submit" value='Create Account'/>
+    <input  type="hidden" name="_csrf" value="<%= _csrf %>" />
+    </form><br>
+
+  </div>
+    </div>
+  </body>
+</html>
