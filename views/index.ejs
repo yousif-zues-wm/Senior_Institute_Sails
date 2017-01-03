@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -12,6 +11,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script src="http://cdn.kik.com/kik/2.3.6/kik.js"></script>
 <style media="screen">
 .chat {
   list-style: none;
@@ -417,6 +417,22 @@ li.active a {
   font-weight: bold;
   color: #333;
 }
+#pH{
+  color: black;
+  text-align: center;
+}
+#b{
+  color:black
+}
+.table-borderless tbody tr td,
+.table-borderless tbody tr th,
+.table-borderless thead tr th,
+.table-borderless thead tr td,
+.table-borderless tfoot tr th,
+.table-borderless tfoot tr td {
+    border: none;
+}
+
 </style>
   </head>
   <body>
@@ -426,27 +442,85 @@ li.active a {
       <li class="active"><a href="/">Home</a></li>
       <li ><a href="/user/index1">Users</a></li>
       <li><a href="/user/new">Register</a></li>
+      <li><a href="/user/login">Sign-In</a></li>
+      <li><a href="/user/logout">Log-Out</a></li>
+
+
       <li><a href="#">Profile</a></li>
       <li><a href="#">Edit</a></li>
     </ul>
   </nav>
     <div class="jumbotron" id='welcome'><br>
-      <h2>Welcome to the kik Bot</h2><br>
-      <p> We Will Get it running Soon!!</p>
-      <div class="wrapper">
-<div id='menu'>
-  <div class="big-circle">
-    <i class="fa  fa-angellist fa-lg fa-2x"></i>
-  <a href="/user/index1"><i class="fa fa-dribbble fa-lg fa-2x"></i></a>
-  <a href="/user/new"> <i class="fa fa-envelope fa-lg fa-2x"></i></a>
-    <i class="fa fa-camera-retro fa-lg fa-2x"></i>
-    <div class="small-circle">
-      <span class="lines"></span>
+      <h2>Personal Portfolio</h2><br>
+      <p> A Place to Showcase all of my Coding Projects!!</p>
+
     </div>
-  </div>
-</div>
-</div>
+
+
+
+    <div id='pH' class="col-sm-5">
+      <div style='background-color:#2196F3; color:white; border-radius:25px;margin-top:88%;position:relative;margin-left:3% ;' class="jumbotron">
+      <span style='font-size:200%;' class='glyphicon glyphicon-signal'></span> <p>Year One (LAMP)</p>
     </div>
+
+    </div>
+    <div id='pH' class="col-sm-5">
+      <div style='background-color:#2196F3; color:white; border-radius:25px;margin-top:88%; position:relative;left:42%;' class="jumbotron">
+      <span style='font-size:200%' class='glyphicon glyphicon-list-alt'></span><p>Year 2 (MEAN)</p>
+    </div>
+    <div id='pH' class="col-sm-5">
+      <div style='background-color:#BBDEFB; color:white; border-radius:25px;margin-left:94%;width:240%;margin-top:-30%;z-index:-1;height:400px;' class="jumbotron">
+        <table style='color:black;border-color: black;' class="table table-borderless">
+          <thead>
+            <tr>
+                <th>Project Name</th>
+              <th>Filesize</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Passport Project One</td>
+              <td><a href="files/passport-project-1.zip" download>5.6 Mb</a></td>
+            </tr>
+            <tr>
+              <td>Project_name.zip</td>
+              <td><a href="#" download>2 Gb</a></td>
+            </tr>
+            <tr>
+              <td>Project_name.zip</td>
+              <td><a href="#" download>3 Tb</a></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div id='pH' class="col-sm-5">
+      <div style='background-color:#BBDEFB; color:white; border-radius:25px;margin-left:-710%;width:658%;margin-top:-80%;z-index:-1;height:400px;' class="jumbotron">
+<table style='color:black;border-color: black;' class="table table-borderless">
+  <thead>
+    <tr>
+        <th>Project Name</th>
+      <th>Filesize</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Project_name.zip</td>
+      <td><a href="#" download>1 Kb</a></td>
+    </tr>
+    <tr>
+      <td>Project_name.zip</td>
+      <td><a href="#" download>2 Mb</a></td>
+    </tr>
+    <tr>
+      <td>Project_name.zip</td>
+      <td><a href="#" download>3 Gb</a></td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+    </div>
+      <h1>Coding Projects</h1><br>
+      <a href="https://github.com/yousif-zues-wm?page=1&tab=repositories"><h2>See me on Git</h2></a>
   </center>
   <script type="text/javascript">
   $( ".big-circle" ).hover(function() {
@@ -458,12 +532,23 @@ li.active a {
   </script>
   <script type='text/javascript'>
 window.onload=function(){
-//When user clicks link
+
 $('#myModal').on('shown.bs.modal', function () {
     var elem = document.getElementById('reverse_scroll');
     elem.scrollTop = elem.scrollHeight;
 });
 }
+
+</script>
+<script type="text/javascript">
+  if(kik.enabled){
+    console.log('running');
+  }
+  else if(!kik.enabled){
+    console..log('Bot is Down!!');
+  }
+
+
 
 </script>
   </body>

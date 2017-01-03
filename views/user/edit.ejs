@@ -67,16 +67,18 @@ li.active a {
   </head>
   <body >
     <center>
-    <div style='margin-top:7%;' class="container jumbotron">
       <nav>
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/user/index1">Users</a></li>
       <li><a href="/user/new">Register</a></li>
-      <li><a href="#">Profile</a></li>
+      <li><a href="/user/show/<%= user.id %>">Profile</a></li>
       <li class="active"><a href="#">Edit</a></li>
+      <li><a href="/user/login">Sign-in</a></li>
     </ul>
   </nav>
+  <div style='margin-top:7%;width:100%;' class="container jumbotron">
+
     <form class="form-signin" action="/user/update/<%= user.id %>" method="post">
       <h2>Editing <%= user.name %></h2><br>
       <p>

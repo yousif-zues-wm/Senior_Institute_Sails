@@ -17,7 +17,8 @@ module.exports.models = {
   * connections (see `config/connections.js`)                                *
   *                                                                          *
   ***************************************************************************/
-  connection: 'localDiskDb',
+  // connection: 'localDiskDb',
+  connection: 'mongodb',
 
   /***************************************************************************
   *                                                                          *
@@ -52,6 +53,11 @@ module.exports.models = {
             type: 'boolean',
             required: true,
             defaultsTo: false
+        },
+        sid : {
+          type: 'string',
+          required: true,
+          defaultsTo: 'null'
         }
 }
 

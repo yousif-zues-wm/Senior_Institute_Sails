@@ -79,15 +79,17 @@ module.exports = {
    * variable.  If NODE_ENV is not set, Sails will run in the                *
    * 'development' environment.                                              *
    ***************************************************************************/
-   adapters: {
-     mongo: {
-       module: 'sails-mongo',
-       host: "localhost",
-       port: 27017,
-       database: "myApp",
-       schema: true
-     }
-   }
+
+  connections: {
+      mongodb: {
+        host      : 'localhost',
+        port      : 27017,
+        user      : 'user',
+        password  : 'password',
+        database  : 'kikBot'
+
+  }
+}
    // environment: process.env.NODE_ENV || 'development'
 
 };

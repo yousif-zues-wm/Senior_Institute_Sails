@@ -67,6 +67,8 @@ color: #333;
     <li><a href="/">Home</a></li>
     <li class="active"><a href="/user/index1">Users</a></li>
     <li><a href="/user/new">Register</a></li>
+    <li><a href="/user/login">sign-in</a></li>
+
     <li><a href="#">Profile</a></li>
     <li><a href="#">Edit</a></li>
   </ul>
@@ -97,9 +99,9 @@ color: #333;
               <td>
                 <%= users.email %>
               </td>
-              <td><a class='btn btn-success' href="/user/show/ <%= users.id %>">Show</a></td>
-              <td><a class='btn btn-info' href="/user/edit/ <%= users.id %>">Edit</a></td>
-              <td><a class='btn btn-danger' href="/user/destroy/ <%= users.id %>">Delete</a></td>
+              <td><a class='btn btn-success' href="/user/show/<%= users.id %>">Show</a></td>
+              <td><a class='btn btn-info' href="/user/edit/<%= users.id %>">Edit</a></td>
+              <td><a class='btn btn-danger' href="/user/destroy/<%= users.id %>">Delete</a></td>
 
             </tr>
             <%  }) %>

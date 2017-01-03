@@ -31,9 +31,10 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // cookie: {
-  //   maxAge: 24 * 60 * 60 * 1000
-  // },
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000,
+    authenticated: true
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -74,8 +75,8 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // adapter: 'mongo',
-  // url: 'mongodb://user:password@localhost:27017/dbname', // user, password and port optional
+  adapter: 'mongo',
+  url: 'mongodb://user:password@localhost:27017/kikBot', // user, password and port optional
 
   /***************************************************************************
   *                                                                          *
@@ -89,12 +90,8 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // collection: 'sessions',
-  // stringify: true,
-  // mongoOptions: {
-  //   server: {
-  //     ssl: true
-  //   }
-  // }
+  collection: 'user',
+  stringify: true
+
 
 };

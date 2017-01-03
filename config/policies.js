@@ -53,5 +53,6 @@ module.exports.policies = {
     destroy: true,
     admin: ['admin']
 
+
   }
 };

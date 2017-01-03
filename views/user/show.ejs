@@ -69,8 +69,9 @@ li.active a {
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/user/index1">Users</a></li>
-    <li><a href="/user/new">Register</a></li>
-    <li class="active"><a >Profile</a></li>
+    <li id='su'><a  href="/user/new">Register</a></li>
+    <li><a href="/user/login">Sign-In</a></li>
+    <li class="active"><a ><%= user.name %></a></li>
     <li><a href="#">Edit</a></li>
   </ul>
 </nav>
@@ -98,6 +99,10 @@ li.active a {
         z = 1
       }
     }
+    if ( undefined != <%=req.session.authenticated%>){
+   document.getElementById('su').style.display = "none"
+      }
+
     </script>
   </body>
 </html>
