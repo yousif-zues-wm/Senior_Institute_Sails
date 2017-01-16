@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    * {
+margin: 0;
+padding: 0;
+}
+
+nav {
+margin: 50px;
+}
+
+ul {
+overflow: auto;
+list-style-type: none;
+}
+
+li {
+height: 25px;
+float: left;
+margin-right: 0px;
+border-right: 1px solid #aaa;
+padding: 0 20px;
+}
+
+li:last-child {
+border-right: none;
+}
+
+li a {
+text-decoration: none;
+color: #ccc;
+font: 25px/1 Helvetica, Verdana, sans-serif;
+text-transform: uppercase;
+
+-webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+-o-transition: all 0.5s ease;
+-ms-transition: all 0.5s ease;
+transition: all 0.5s ease;
+}
+
+li a:hover {
+color: #666;
+}
+
+li.active a {
+font-weight: bold;
+color: #333;
+}
+    </style>
+  </head>
+  <body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li class="active"><a href="/room/index1">room</a></li>
+    <li><a href="/room/new">Register</a></li>
+    <li><a href="/room/login">sign-in</a></li>
+
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Edit</a></li>
+  </ul>
+</nav>
+    <div class="container">
+      <h3>Rooms</h3>
+      <table class='table'>
+        <tr>
+          <th>
+            Title
+          </th>
+          <th>
+            Genre
+          </th>
+          <th>
+            Published By
+          </th>
+
+
+          <% room,  _.each(room, function(room){ %>
+            <tr data-id='<%= room.id %>' data-model='room'>
+              <td>
+                <%= room.title %>
+              </td>
+              <td>
+                <%= room.genre %>
+              </td>
+              <td>
+                Published By <%= room.user %>
+              </td>
+              <td><a class='btn btn-success' href="/room/join/<%= room.id %>">Show</a></td>
+              <td><a class='btn btn-warning' href="/room/fav/<%= room.id %>">Favorite</a></td>
+              <td><a class='btn btn-info' href="/room/like/<%= room.id %>">Like</a></td>
+              <td><a class='btn btn-danger' href="/room/dislike/<%= room.id %>">Dislike</a></td>
+
+            </tr>
+            <%  }) %>
+
+      </table>
+    </div>
+  </body>
+</html>

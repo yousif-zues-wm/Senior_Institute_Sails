@@ -66,21 +66,28 @@ module.exports = {
 
 	logout: function (req, res, next) {
 		// var sid = req.param('sid');
-		User.update({sid : req.param('sid')} , {sid : null}).exec(function(err, user){
+		if (req.cookies.uid === undefined) {
+			res.redirect('/user/login')
+		}
+		else{
+		User.findOne(req.cookies.uid).exec(function(err, user){
 				if (err) {
 						return res.serverError(err)
+				}
+				if (user === undefined) {
+					res.redirect('/user/login')
 				}
 		var uid = req.cookies.uid
 		User.findOne(uid).exec(function(err, user){
 			if (err) {
 				return res.serverError(err)
 			}
- 		uid = null;
+			res.clearCookie("uid");
 		console.log(`New Cookie ${uid}`)
     return res.redirect('/');
 	})
 });
-
+	}
   },
 
 		// newSession : function(req, res, next){
@@ -117,6 +124,10 @@ module.exports = {
 			var uid = req.cookies.uid
 			console.log(`Cookie ${uid}`)
 			User.findOne(uid).exec(function(err, user){
+
+
+
+
 				if (user === undefined) {
 					console.log(`Failed`)
 				}
