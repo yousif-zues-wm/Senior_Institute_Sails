@@ -27,16 +27,17 @@ module.exports = {
 			}
 			else{
 			console.log('Success');
-			req.session.regenerate(function(err) {
+			// req.session.regenerate(function(err) {
+			//
+			// 	console.log(req.sessionID)
+			// 	User.update({email : req.param('email')}, {sid: req.sessionID}).exec(function(err, user) {
+			// 		console.log('id ' + req.sessionID)
+			// 		if (err) {
+			// 		return res.serverError(err)}
+			// 	})
+			// })
+			res.cookie('uid' , user.sid , {httponly : true}).redirect('/user/succ');
 
-				console.log(req.sessionID)
-				User.update({email : req.param('email')}, {sid: req.sessionID}).exec(function(err, user) {
-					console.log('id ' + req.sessionID)
-					if (err) {
-					return res.serverError(err)}
-				})
-			})
-			res.redirect('/');
 			console.log('id' + user.sid);
 		}
 
@@ -63,19 +64,23 @@ module.exports = {
 
 
 
-	logout: function (req, res) {
-		var sid = req.param('sid');
+	logout: function (req, res, next) {
+		// var sid = req.param('sid');
 		User.update({sid : req.param('sid')} , {sid : null}).exec(function(err, user){
 				if (err) {
 						return res.serverError(err)
 				}
-		});
-
-
-    if (req.wantsJSON) {
-      return res.ok('Logged out successfully!');
-    }
+		var uid = req.cookies.uid
+		User.findOne(uid).exec(function(err, user){
+			if (err) {
+				return res.serverError(err)
+			}
+ 		uid = null;
+		console.log(`New Cookie ${uid}`)
     return res.redirect('/');
+	})
+});
+
   },
 
 		// newSession : function(req, res, next){
@@ -107,6 +112,17 @@ module.exports = {
 		// 	console.log('working');
 		// },
 
+
+		succ : function(req, res, next){
+			var uid = req.cookies.uid
+			console.log(`Cookie ${uid}`)
+			User.findOne(uid).exec(function(err, user){
+				if (user === undefined) {
+					console.log(`Failed`)
+				}
+				res.view({ user: user });
+			})
+		},
 
 
 		find: function(req, res,next){
@@ -190,22 +206,30 @@ module.exports = {
 		res.locals.flash = _.clone(req.session.flash);
 		res.view();
 		req.session.flash = {};
-
-
-
 	},
 
 	 create: function(req, res, next){
-		 User.create(req.params.all(), function userCreated(err, user){
-			 if(err){
-				 return res.serverError(err);
-			 }
-			//  return res.redirect('/user/new');
-			//  return res.jsonx(user);
+		 var emailF = req.param('email')
+		 var pw = req.param('password')
+		 User.find({email : emailF}).exec(function(err, fuser){
+			 	if (fuser === undefined) {
+					User.create(req.params.all(), function userCreated(err, user){
+						if(err){
+							return res.serverError(err);
+						}
+					 //  return res.redirect('/user/new');
+					 //  return res.jsonx(user);
 
-			res.redirect('user/show/' + user.id);
-			console.log(user.sid)
-		 });
+					 res.redirect('user/show/' + user.id);
+					 console.log(user.sid)
+					});
+			 	}
+				else{
+					console.log(`User Exists!!!`)
+					res.redirect('/')
+				}
+		 })
+
 	 },
 
 	 nf: function(req,res,next){

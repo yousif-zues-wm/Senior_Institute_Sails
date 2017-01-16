@@ -1,5 +1,5 @@
 /**
- * ItemController
+ * ViewController
  *
  * @description :: Server-side logic for managing items
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
@@ -36,6 +36,7 @@ module.exports = {
 					res.redirect('/item/view')
 				}
 					res.redirect('http://www.facebook.com');
+
 		})
 	}
 };

