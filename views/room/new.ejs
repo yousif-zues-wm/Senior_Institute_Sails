@@ -93,9 +93,8 @@ li.active a {
       Genre:
     </p>
     <input class="form-control" ng-model='Genre' name='genre' type='text' placeholder="Genre" maxlength='32' required/><br>
-    <!-- <p>
-      Password:
-    </p> -->
+    <p>Starting Song (Link): </p>
+    <input class='form form-control' type="text" name="media" placeholder='Link' value="">
     <input class="form-control password" type="hidden" name="user" id='user' placeholder="Password" maxlength='32' value='<%= user.name %>' required/><br>
     <input class="btn btn-info" type="submit" value='Create Room'/>
     <input  type="hidden" name="_csrf" value="<%= _csrf %>" />

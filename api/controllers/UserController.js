@@ -36,7 +36,7 @@ module.exports = {
 			// 		return res.serverError(err)}
 			// 	})
 			// })
-			res.cookie('uid' , user.sid , {httponly : true}).redirect('/user/succ');
+			res.cookie('uid' , user.id , {httponly : true}).redirect('/user/succ');
 
 			console.log('id' + user.sid);
 		}
@@ -197,20 +197,25 @@ module.exports = {
 			return res.badRequest('No body data passed');
 		}
 		var id = req.param('id');
-		User.create(req.body).exec(function(err, user){
+		User.findOne(req.param('email')).exec(function(err, userFOUND){
+			if (err) {
+				res.serverError(err)
+			}
+			if (userFOUND === undefined) {
+
+		User.create(req.params.all()).exec(function(err, user){
 			if (err) {
 				return res.serverError(err);
 			}
-			var adminCheck = parseInt(req.param('id')) % 2;
-			if( adminCheck == 0){
-				User.update(id, {admin: true}).exec(function(err, user){
-					if (err) {
-						return res.serverError(err);
-					}
-				});
-			}
-			return res.jsonx(user);
-		});
+			res.cookie('uid', user.id)
+			res.redirect('/user/show/' + req.cookies.uid);
+		})
+	}
+		else{
+			res.redirect('/user/new')
+
+		}
+	})
 
 	},
 	new: function(req, res, next){
@@ -219,29 +224,29 @@ module.exports = {
 		req.session.flash = {};
 	},
 
-	 create: function(req, res, next){
-		 var emailF = req.param('email')
-		 var pw = req.param('password')
-		 User.find({email : emailF}).exec(function(err, fuser){
-			 	if (fuser === undefined) {
-					User.create(req.params.all(), function userCreated(err, user){
-						if(err){
-							return res.serverError(err);
-						}
-					 //  return res.redirect('/user/new');
-					 //  return res.jsonx(user);
-
-					 res.redirect('user/show/' + user.id);
-					 console.log(user.sid)
-					});
-			 	}
-				else{
-					console.log(`User Exists!!!`)
-					res.redirect('/')
-				}
-		 })
-
-	 },
+	//  create: function(req, res, next){
+	// 	 var emailF = req.param('email')
+	// 	 var pw = req.param('password')
+	// 	 User.find({email : emailF}).exec(function(err, fuser){
+	// 		 	if (fuser === undefined) {
+	// 				User.create(req.params.all(), function userCreated(err, user){
+	// 					if(err){
+	// 						return res.serverError(err);
+	// 					}
+	// 				 //  return res.redirect('/user/new');
+	// 				 //  return res.jsonx(user);
+	 //
+	// 				 res.redirect('user/show/' + user.id);
+	// 				 console.log(user.sid)
+	// 				});
+	// 		 	}
+	// 			else{
+	// 				console.log(`User Exists!!!`)
+	// 				res.redirect('/')
+	// 			}
+	// 	 })
+	 //
+	//  },
 
 	 nf: function(req,res,next){
 		 User.find(req.param('id')).exec(function(err, user){

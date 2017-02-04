@@ -51,6 +51,7 @@ li.active a {
 font-weight: bold;
 color: #333;
 }
+
     </style>
   </head>
   <body>
@@ -62,6 +63,22 @@ color: #333;
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript">
+    var loadInfo = function (videoId) {
+  var gdata = document.createElement("script");
+  gdata.src = "http://gdata.youtube.com/feeds/api/videos/" + videoId + "?v=2&alt=jsonc&callback=storeInfo";
+  var body = document.getElementsByTagName("body")[0];
+  body.appendChild(gdata);
+};
+
+var storeInfo = function (info) {
+  console.log(info.data.title);
+  
+  document.getElementById('videoName').innerHTML = info.data.title
+};
+loadInfo('<%= room.media %>');
+    </script>
     <nav>
   <ul>
     <li><a href="/">Home</a></li>
@@ -73,54 +90,16 @@ color: #333;
     <li><a href="#">Edit</a></li>
   </ul>
 </nav>
-    <div class="container">
-      <h3>Rooms</h3>
-      <table class='table'>
-        <tr>
-          <th>
-            Title
-          </th>
-          <th>
-            Genre
-          </th>
-          <th>
-            Publihed By
-          </th>
+<div ng-app='myApp' class="">
+  <center> <h1><%= room.title %></h1><a href="/room/like/<%= room.id %>"><span class='glyphicon glyphicon-thumbs-up'></span></a><p id='likes'><%= room.likes %></p>
 
-
-          <% room,  _.each(room, function(room, yourRoom){ %>
-            <tr data-id='<%= room.id %>' data-model='room'>
-              <td>
-                <%= room.title %>
-              </td>
-              <td>
-                <%= room.genre %>
-              </td>
-              <td>
-                Published By <%= room.user %>
-              </td>
-              <td><a class='btn btn-success' href="/room/join/<%= room.id %>">Show</a></td>
-              <td><a class='btn btn-warning' href="/room/fav/<%= room.id %>">Favorite</a></td>
-              <td> <a href="/room/like/<%= room.id %>"><span class='glyphicon glyphicon-thumbs-up'></span></a><p id='likes'><%= room.likes %></p></td>
-              <!-- <td><a class='btn btn-danger' href="/room/dislike/<%= room.id %>">Dislike</a></td> -->
-              <td> <a href="/room/dislike/<%= room.id %>"><span class='glyphicon glyphicon-thumbs-down'></span></a><p id='dislikes'><%= room.dislikes %></p></td>
-              <% if (yourRoom !== undefined){ %>
-
-                <td><a href="/room/destroy/<%= room.id %>"><button type="button" class='btn btn-danger' name="button">Delete</button></a></td>
-
-              <% } %>
-
-            </tr>
-            <%  }) %>
-
-      </table>
-      <a href="/room/new"><button type="button" class='btn btn-info' name="button">New Room</button></a>
+                 <a href="/room/dislike/<%= room.id %>"><span class='glyphicon glyphicon-thumbs-down'></span></a><p id='dislikes'><%= room.dislikes %></p></center>
+    <div style='text-align:center' class="jumbotron">
+      <p> <p id='videoName'></p>Currently Playing</p>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= room.media %>?autoplay=1&showinfo=0&controls=0" frameborder="0" allowfullscreen autoplay></iframe>
     </div>
-    <script type="text/javascript">
-    var likes = document.getElementById('likes')
-    var dislikes = document.getElementById('dislikes')
+    <input type="text" name="media" ng-model='media' class='form form-control'  placeholer='Song Suggetion' value="">
+  </div>
 
-
-    </script>
   </body>
 </html>
