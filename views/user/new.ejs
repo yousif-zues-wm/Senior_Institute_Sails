@@ -104,10 +104,13 @@ li.active a {
       Password:
     </p>
     <input class="form-control password" type="password" name="password" id='password' placeholder="Password" maxength='32' required/><br>
+    <p>
+      Password Confirmation:
+    </p>
+    <input class="form-control password" type="password" name="confirmation" id='password' placeholder="Password Confirmation" maxength='32' required/><br>
     <input class="btn btn-info" type="submit" value='Create Account'/>
     <input  type="hidden" name="_csrf" value="<%= _csrf %>" />
     </form><br>
-
   </div>
     </div>
   </body>
