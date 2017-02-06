@@ -90,7 +90,7 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-//  collection: 'user',
+  collection: 'user',
   stringify: true
 
 
