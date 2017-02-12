@@ -95,7 +95,6 @@ module.exports = {
 				}
 				var userL = []
 				var userL = user.likes;
-				var z = 2;
 				var id = req.param('id')
 
 
@@ -208,7 +207,7 @@ module.exports = {
 			if (err) {
 				return res.serverError(err)
 			}
-
+			
 		})
 	},
 	destroy: function(req, res, next){
