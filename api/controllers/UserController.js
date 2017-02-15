@@ -387,5 +387,23 @@ module.exports = {
 			}
 			res.redirect('/user/show/' + req.param('id'));
 		});
+	},
+	 test : function(req, res, next){
+		 var userData = undefined
+
+		 if (req.cookies.uid === undefined) {
+			 res.view(userData)
+		 }
+		 User.findOne(req.cookies.uid).exec(function(err, user){
+			 if (err) {
+			 	return res.serverError(err)
+			 }
+			 if (user === undefined) {
+				res.view(userData)
+			 }
+			 else{
+				 res.view({user : user})
+			 }
+		 })
 	 }
 };

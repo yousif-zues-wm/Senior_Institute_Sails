@@ -1,0 +1,10 @@
+
+
+    <h1>Welcome <h1 id='User'><%= user.name %></h1> <a id='loggedIn' style='display: none' href="/user/login">Sign-in</a></h1>
+    <script type="text/javascript">
+      var User = doument.getElementById('User')
+      if (userData === undefined) {
+        User.style.display = 'none'
+        document.getElementById('loggedIn').style.display = 'block'
+      }
+    </script>
